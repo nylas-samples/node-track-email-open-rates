@@ -1,6 +1,6 @@
 # node-code-sample-starter
 
-This sample repo will show you how to easily to get started with the Nylas Node.js SDK.
+This sample repo will show you how to track email open rates with the Nylas Node.js SDK.
 
 ## Setup
 
@@ -38,20 +38,8 @@ $ node build/index.js
 When you run the script, you'll get account information output in your terminal:
 
 ```bash
-{
-    ...
-    id: '<ACCOUNT_ID>',
-    accountId: '<ACCOUNT_ID>',
-    object: 'account',
-    name: '<ACCOUNT_NAME>',
-    emailAddress: '<ACCOUNT_EMAIL>',
-    provider: '<EMAIL_PROVIDER>',
-    organizationUnit: 'label',
-    syncState: 'running',
-    linkedAt: 2022-04-21T14:48:14.000Z,
-    accessToken: ''
-  }
-}
+Email: xyz@gmail.com on [2/15/2023], Subject: With Love, from Nylas, Status: [Unopened]
+Email: xyz@nylas.com on [2/15/2023], Subject: With Love, from Nylas, Status: [Opened]
 ```
 
 ## Learn more
