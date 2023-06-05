@@ -22,7 +22,7 @@ try {
   users.forEach(async function(user){
 
     const nylas = Nylas.with(user.accessToken);
-    const messages = await nylas.messages;
+    const messages = nylas.messages;
   
     const messageList = await messages.list({ in: 'Inbox', limit: 1, subject: "With Love, from Nylas" });
   
