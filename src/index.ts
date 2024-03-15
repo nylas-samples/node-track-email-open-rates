@@ -1,16 +1,16 @@
-import 'dotenv/config';
-import Nylas from "nylas"
+import 'dotenv/config'
+import Nylas from 'nylas'
 
-Nylas.config({
-  clientId: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
-});
+const NylasConfig = {
+  apiKey: process.env.API_KEY,
+  apiUri: process.env.API_URI,
+}
 
 try {
 
   const users = [
     { 
-      accessToken: process.env.ACCESS_TOKEN,
+      grantId: process.env.USER_GRANT_ID,
       emailAddress: 'xyz@nylas.com',
     },
     // { 
@@ -20,13 +20,17 @@ try {
   ];
 
   users.forEach(async function(user){
+    const nylas = new Nylas(NylasConfig);
 
-    const nylas = Nylas.with(user.accessToken);
-    const messages = nylas.messages;
+    const messages = await nylas.messages.list({
+      identifier: user.grantId as string,
+      queryParams: {
+        limit: 5,
+        subject: "With Love, from Nylas"
+      }
+    })
   
-    const messageList = await messages.list({ in: 'Inbox', limit: 1, subject: "With Love, from Nylas" });
-  
-    messageList.map((message) => {
+    messages.data.map((message) => {
       const date = new Date(message.date).toLocaleDateString();
       console.log(
         `Email: ${user.emailAddress} on [${date}],
