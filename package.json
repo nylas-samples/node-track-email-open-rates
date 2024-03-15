@@ -57,6 +57,6 @@
   },
   "dependencies": {
     "dotenv": "^16.0.1",
-    "nylas": "^6.4.0"
+    "nylas": "^7.2.1"
   }
 }
